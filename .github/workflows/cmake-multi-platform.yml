@@ -55,8 +55,23 @@ jobs:
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
      - name: Setup Android NDK
-      uses: nttld/setup-ndk@v1.5.0
-            
+     - uses: nttld/setup-ndk@v1.5.0
+                        - name: Android NDK toolchain Setup
+  # You may pin to the exact commit or the version.
+  # uses: ravinderjangra/android-ndk-toolchain-setup@88bfbd8e61af597832637fb9d2f81a7cc68d1331
+  uses: ravinderjangra/android-ndk-toolchain-setup@0.2
+  with:
+    # Android API
+    api: # default is 21
+    # Platform arch
+    arch: 
+    # Path to use for NDK toolchain
+    install-location: 
+    # Force install toolchain
+    force: # optional, default is false
+    # Add toolchain to the path
+    add-to-path: # optional, default is true
+          
     - name: Build
       # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}

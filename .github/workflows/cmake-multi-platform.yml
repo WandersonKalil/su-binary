@@ -3,7 +3,6 @@
 name: CMake on multiple platforms
 
 on:
-  push:
     branches: [ "main" ]
     
      - name: Setup Android NDK
